@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,4 +66,16 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+=======
+html {
+  background-color: #FFFCF2;
+}
+
+#root {
+  background-color: #FFFCF2;
+>>>>>>> Stashed changes
+}
+
+a:hover {
+  opacity: 60%;
 }
