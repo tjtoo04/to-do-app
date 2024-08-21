@@ -1,11 +1,10 @@
 import { Button } from "@mui/material";
 import React from "react";
 
-
 interface FilterBtnProps {
     name: string;
-    isPressed: boolean;
     setFilter: (filter: string) => void;
+    isPressed: boolean;
 }
 
 export default function FilterBtn({ name, setFilter }: FilterBtnProps): JSX.Element {

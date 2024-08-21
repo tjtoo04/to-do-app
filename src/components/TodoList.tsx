@@ -33,7 +33,6 @@ const styles = {
     marginRight: 'auto'
 };
 
-
 interface Todo {
     id: string;
     text: string;
@@ -125,7 +124,7 @@ export default function TodoList(): JSX.Element {
                             textAlign: 'center'
                         }}    
                     >
-                        This are your Tasks for the day :)
+                        what&apos;s on the docket for today? 
                     </Typography>
                     <TodoForm addTodo={addTodo} />
                     {taskList}

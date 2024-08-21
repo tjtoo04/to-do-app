@@ -20,9 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-<<<<<<< Updated upstream
+
   "include": ["src", "src/components"]
-=======
-  "include": ["src"]
->>>>>>> Stashed changes
 }

@@ -5,10 +5,6 @@ import { InputAdornment } from '@mui/material';
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 interface TodoFormProps {
     addTodo: (text: string) => void;
 }

@@ -9,7 +9,6 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import React from 'react';
 
-
 interface TodoItemProps {
     todo: {
         id: number | string;
