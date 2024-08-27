@@ -14,6 +14,7 @@ dist-ssr
 /backend/todo/todo/__pycache__
 /backend/todo/todoo/__pycache__
 /backend/todo/todoo/migrations/__pycache__
+/backend/todo/db.sqlite3
 *.py[cod]
 
 # Editor directories and files
