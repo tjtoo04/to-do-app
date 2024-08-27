@@ -7,13 +7,12 @@ import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import React from "react";
 import axios from "axios";
 
 interface TodoItemProps {
   todo: {
     id: number | string;
-    text: string;
+    title: string;
     completed: boolean;
   };
   remove: (id: number | string) => void;
@@ -57,7 +56,7 @@ export default function TodoItem({
       }
       disablePadding
     >
-      <ListItemButton role={undefined} dense>
+      <ListItemButton dense>
         <ListItemIcon>
           <Checkbox
             edge="start"
@@ -71,7 +70,7 @@ export default function TodoItem({
             color="warning"
           />
         </ListItemIcon>
-        <ListItemText id={labelId} primary={todo.text} />
+        <ListItemText id={labelId} primary={todo.title} />
       </ListItemButton>
     </ListItem>
   );

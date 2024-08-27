@@ -3,11 +3,17 @@ import TextField from "@mui/material/TextField";
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import { InputAdornment } from '@mui/material';
 import { IconButton } from "@mui/material";
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 import axios from 'axios'; 
 
+interface Todo {
+	id: string;
+	title: string;
+	completed: boolean;
+}
 interface TodoFormProps {
-    addTodo: (text: string) => void;
+    addTodo: (todo: Todo) => void;
 }
 
 export default function TodoForm({ addTodo }: TodoFormProps): JSX.Element {
@@ -25,7 +31,9 @@ export default function TodoForm({ addTodo }: TodoFormProps): JSX.Element {
                     title: text,
                     completed: false
                 });
-                addTodo(response.data.title);
+                console.log(response);
+                
+                addTodo(response.data);
                 setText(''); 
             } catch (error) {
                 console.error('Error adding the task:', error);

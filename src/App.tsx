@@ -1,5 +1,4 @@
 import * as React from 'react';
-import axios from 'axios'; // Import axios
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
@@ -9,10 +8,11 @@ import TodoList from './components/TodoList';
 import CssBaseline from '@mui/material/CssBaseline';
 import { deepPurple, grey, teal } from '@mui/material/colors';
 import './App.css';
+import type { PaletteMode } from '@mui/material';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
-const getDesignTokens = (mode) => ({
+const getDesignTokens = (mode: PaletteMode ) => ({
   palette: {
     mode,
     ...(mode === 'light'
@@ -74,8 +74,6 @@ function ColorModeToggle() {
 
 export default function ToggleColorMode() {
   const [mode, setMode] = React.useState<'light' | 'dark'>('light');
-  const [tasks, setTasks] = React.useState([]); 
-
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -86,18 +84,6 @@ export default function ToggleColorMode() {
   );
 
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-
- 
-  React.useEffect(() => {
-    axios
-      .get('http://localhost:8000/api/task-list/')
-      .then((res) => {
-        setTasks(res.data); 
-      })
-      .catch((err) => console.log(err));
-  }, []); 
-
-  
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -115,7 +101,7 @@ export default function ToggleColorMode() {
           }}
         >
           <ColorModeToggle />
-          <TodoList tasks={tasks} /> 
+          <TodoList /> 
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
