@@ -4,6 +4,7 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import { InputAdornment } from '@mui/material';
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
+import axios from 'axios'; 
 
 interface TodoFormProps {
     addTodo: (text: string) => void;
@@ -16,11 +17,19 @@ export default function TodoForm({ addTodo }: TodoFormProps): JSX.Element {
         setText(evt.target.value);
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         if (text.trim()) {
-            addTodo(text);
-            setText('');
+            try {
+                const response = await axios.post('http://localhost:8000/api/task-create/', {
+                    title: text,
+                    completed: false
+                });
+                addTodo(response.data.title);
+                setText(''); 
+            } catch (error) {
+                console.error('Error adding the task:', error);
+            }
         }
     };
 

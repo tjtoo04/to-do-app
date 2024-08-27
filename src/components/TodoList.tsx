@@ -39,11 +39,6 @@ interface Todo {
     completed: boolean;
 }
 
-const getInitialData = (): Todo[] => {
-    const data = JSON.parse(localStorage.getItem('todos') || '[]');
-    return data || [];
-};
-
 const FILTER_MAP: { [key: string]: (todo: Todo) => boolean } = {
     All: () => true,
     Active: (todo) => !todo.completed,
@@ -52,8 +47,12 @@ const FILTER_MAP: { [key: string]: (todo: Todo) => boolean } = {
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-export default function TodoList(): JSX.Element {
-    const [todos, setTodos] = useState<Todo[]>(getInitialData);
+interface TodoListProps {
+    tasks: Todo[];
+}
+
+export default function TodoList({ tasks }: TodoListProps): JSX.Element {
+    const [todos, setTodos] = useState<Todo[]>(tasks);
     const [filter, setFilter] = useState<string>('All');
 
     const filterList = FILTER_NAMES.map((name) => (
@@ -64,6 +63,10 @@ export default function TodoList(): JSX.Element {
             setFilter={setFilter}
         />
     ));
+
+    useEffect(() => {
+        setTodos(tasks); 
+    }, [tasks]);
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));

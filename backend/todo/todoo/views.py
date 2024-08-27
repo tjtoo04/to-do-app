@@ -40,14 +40,14 @@ def taskCreate(request):
         serializer.save()
     return Response(serializer.data)
 
-@api_view(['PUT'])
+@api_view(['PUT', 'PATCH'])
 def taskUpdate(request, pk):
     try:
         task = Task.objects.get(id=pk)
     except Task.DoesNotExist:
         return Response({'error': 'Task not found'}, status=404)
 
-    serializer = TaskSerializer(instance=task, data=request.data)
+    serializer = TaskSerializer(instance=task, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
