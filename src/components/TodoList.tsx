@@ -35,7 +35,7 @@ const styles = {
 
 interface Todo {
     id: string;
-    text: string;
+    title: string;
     completed: boolean;
 }
 
@@ -72,6 +72,7 @@ export default function TodoList({ tasks }: TodoListProps): JSX.Element {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
 
+
     const removeTodo = (id: number | string): void => {
         setTodos((prevTodos) => prevTodos.filter((t) => t.id !== id));
     };
@@ -81,17 +82,16 @@ export default function TodoList({ tasks }: TodoListProps): JSX.Element {
             return prevTodos.map((todo) => {
                 if (todo.id === id) {
                     return { ...todo, completed: !todo.completed };
-                } else {
-                    return todo;
                 }
+                    return todo;
             });
         });
     };
 
-    const addTodo = (text: string): void => {
+    const addTodo = (title: string): void => {
         setTodos((prevTodos) => [
             ...prevTodos,
-            { text, id: crypto.randomUUID(), completed: false }
+            { title, id: crypto.randomUUID(), completed: false }
         ]);
     };
 

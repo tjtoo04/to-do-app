@@ -13,7 +13,7 @@ import axios from "axios";
 interface TodoItemProps {
   todo: {
     id: number | string;
-    text: string;
+    title: string;
     completed: boolean;
   };
   remove: (id: number | string) => void;
@@ -71,7 +71,7 @@ export default function TodoItem({
             color="warning"
           />
         </ListItemIcon>
-        <ListItemText id={labelId} primary={todo.text} />
+        <ListItemText id={labelId} primary={todo.title} />
       </ListItemButton>
     </ListItem>
   );
