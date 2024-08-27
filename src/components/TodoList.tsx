@@ -84,7 +84,6 @@ export default function TodoList(): JSX.Element {
 		});
 	};
 
-
 	const addTodo = (todo: Todo): void => {
 		setTodos((prevTodos) => [
 			...prevTodos,
