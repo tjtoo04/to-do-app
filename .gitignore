@@ -11,7 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
-__pycache__/
+/backend/todo/todo/__pycache__
+/backend/todo/todoo/__pycache__
+/backend/todo/todoo/migrations/__pycache__
 *.py[cod]
 
 # Editor directories and files
